@@ -1,0 +1,51 @@
+/* pages/mine/mypro/mypro.wxss */
+.myprolist{
+    width:620rpx;
+    border:1px solid #ccc;
+    border-radius: 6px;
+    margin:20rpx auto;
+    padding:39rpx 32rpx;
+    background: #fff;
+}
+.myprolist image{
+    width:32rpx;
+    height:32rpx;
+    margin-right: 19rpx
+}
+.title{
+    margin-bottom:28rpx;
+}
+.title text{
+    font-size:32rpx;
+    line-height: 28rpx;
+}
+.content{
+    border-bottom:1px dashed #ccc;
+    padding-bottom: 15rpx;
+}
+.content text{
+    width:572rpx;
+    color: #969696;
+    font-size: 32rpx;
+    line-height: 42rpx;
+}
+.content view{
+    width:48rpx;
+}
+.state{
+    color: #969696;
+    font-size: 32rpx;
+    padding-top:20rpx;
+}
+.state .fl{
+    color: #147ce6
+}
+.warning_pro{
+    width: 300rpx;
+    height:180rpx;
+    position: absolute;
+    top:40%;
+    left:50%;
+    margin-left:-150rpx;
+    margin-top:-90rpx;
+}

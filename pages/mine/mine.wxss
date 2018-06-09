@@ -1,0 +1,56 @@
+.classname{
+  margin-top:88rpx;
+}
+.user_png{
+  width:160rpx;
+  height:160rpx;
+  border-radius: 50%;
+  margin:0 auto;
+}
+.tel_text{
+  width: 100%;
+  text-align: center;
+  display: block;
+}
+.login{
+  width: 100%;
+  text-align: center;
+  color: #147ce6;
+  font-size: 34rpx;
+  text-decoration: underline;
+}
+.service, .mypro{
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin:32rpx auto 20rpx;
+  height:36rpx;
+  width:613rpx;
+  background: #fff;
+  padding:25rpx 40rpx;
+  font-size:24rpx;
+  color: #4b4b4b
+}
+.one{
+  height:36rpx;
+  width:62rpx;
+}
+.two{
+  width:431rpx;
+  height:36rpx;
+}
+.myprolist{
+  
+}
+.yellowBg{
+    background: #ffc720;
+    height:60rpx;
+    padding-top: 25rpx;
+    padding:25rpx 174rpx 0;
+    font-size: 28rpx;
+    color: #fff;
+}
+.change{
+    width: 42rpx;
+    height:33rpx;
+    margin-left:26rpx;
+}

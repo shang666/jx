@@ -1,0 +1,46 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/mine/mine",
+    "pages/forgetpassword/forgetpassword",
+    "pages/resetpassword/resetpassword",
+    "pages/clause/clause",
+    "pages/index/echo/echo",
+    "pages/login/login",
+    "pages/register/register",
+    "pages/index/djt/djt",
+    "pages/index/djt/index",
+    "pages/index/djt/invent",
+    "pages/index/djt/search",
+    "pages/index/mypro/mypro",
+    "pages/index/mypro/mypro/prodetail",
+    "pages/index/mypro/djtdetail/detail",
+    "pages/index/mypro/workdetail/workdetail"
+  ],
+  "window": {
+    "navigationBarTitleText": "点匠",
+    "navigationBarBackgroundColor": "#147ce6",
+    "navigationBarTextStyle":"#fff",
+    "enablePullDownRefresh":"true"
+  },
+  "tabBar": {
+      "color":"#7f8389",
+      "selectedColor":"#147ce6",
+    "list": [{
+      "pagePath": "pages/index/index",
+      "text": "首页",
+      "iconPath":"pages/img/index.png",
+      "selectedIconPath":"pages/img/index_on.png"
+    }, {
+      "pagePath": "pages/mine/mine",
+      "text": "我的",
+      "iconPath":"pages/img/mine.png",
+      "selectedIconPath":"pages/img/mine_on.png"
+    }]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "debug": true
+}

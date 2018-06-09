@@ -1,0 +1,106 @@
+<!--pages/index/djt/invent.wxml-->
+<form bindsubmit="formSubmit">
+<view class="{{shadow}} shadow" bindtap="hidetost"></view>
+    <view class="new_pro">   
+        <view class="input_box clearfix">
+            <text class="fl">标题</text>
+            <view class="fr name box">
+                <input class="fl wi100"  type="text" placeholder="给工程起一个响亮的名字" name="projectTitle" placeholder-style="color:#f1f1f1" maxlength="25" bindblur="get_icon" data-index="1"/>
+                <icon class="icon {{icon_1}}" type="warn" size="15" color="red" />
+                <!--<text class="fr">></text>-->
+            </view>
+        </view>
+        <view class="input_box clearfix">
+            <text class="fl">工期</text>
+            <view class="fr box time">
+                <view class="fl re">
+                     <text style="width:90%;display:inline-block;color:#000;height:50rpx" data-index="1" bindtap="workStartDate">{{bg2}}</text>
+                     <input class="fl hide" name="workStartDate" type="text" placeholder="开工日期"
+                  value="{{bg2}}" bindblur="get_icon" data-index="2"/>
+                     <!--<input class="fl"  type="text" placeholder="开工日期" name="workStartDate" bindblur="getstart"/>-->
+                     <icon class="icon {{icon_2}}" type="warn" size="15" color="red"/>
+                </view>              
+                <image class="fl" src="../../img/time.jpg"></image>
+                <view class="fl re">
+                    <text style="width:90%;display:inline-block;color:#000;height:50rpx" data-index="2" bindtap="workStartDate">{{end_bg2}}</text>
+                    <input class="fl hide" name="workEndDate"  type="text" placeholder="完工日期"
+                bindfocus="workStartDate"  value="{{end_bg2}}"  bindblur="get_icon" data-index="3"/>
+                    <!--<input class="fl"  type="text" placeholder="完工日期" name="workEndDate" bindblur="getend"/>-->
+                    <icon class="icon {{icon_3}}" type="warn" size="15" color="red"/>
+                </view>             
+                <text class="fr" bindtap="workStartDate">></text>
+            </view>
+        </view>
+        <view class="input_box clearfix">
+            <text class="fl">施工地区</text>
+            <view class="fr arr box">
+                <text bindtap="showarr" style="width:90%;display:inline-block;color:#000;height:50rpx;overflow:hidden">{{detail_arr}}</text>
+                <input class="fl hide" type="text" value="{{detail_arr}}" bindfocus="showarr" bindblur="get_icon" data-index="4"/>
+                <icon class="icon {{icon_4}}"  type="warn" size="15" color="red"/>
+                <text class="fr" bindtap="showarr">></text>
+            </view>
+            <view class="{{arr_list}} arr_list">
+                <text class="header">选择地区</text>
+                <text wx:for="{{arr_data}}" data-index="{{item.code}}" data-name="{{item.name}}" 
+                bindtap="getcity">{{item.name}}</text>
+            </view>
+             <view class="{{city}} city">
+                <text class="header">选择地区</text>
+                <text wx:for="{{city_list}}"data-index="{{item.code}}" data-name="{{item.name}}" 
+                bindtap="getxian">{{item.name}}</text>
+            </view>
+             <view class="{{xian}} xian">
+                <text class="header">选择地区</text>
+                <text wx:for="{{xian_list}}"data-index="{{item.code}}" data-name="{{item.name}}" 
+                bindtap="xiancode">{{item.name}}</text>
+            </view>
+        </view>
+        <view class="input_box clearfix">
+            <text class="fl">详细地址</text>
+            <view class="fr arr box">
+                <input class="fl wi100" name="workAddr"  type="text" placeholder="" bindblur="get_icon" data-index="5"/>
+                <icon  class="icon {{icon_5}}" type="warn" size="15" color="red"/>
+                <!--<text class="fr">></text>-->
+            </view>
+        </view>
+        <view class="disrc">
+            <view class="clearfix">
+                <text class="fl">工作描述</text>
+                <icon class="icon {{icon_6}}" type="warn" size="15" color="red"/>
+            </view>
+            <textarea class="{{dirs}}" placeholder="15-150字，如要求施工队人数、业绩、工人拥有的资格证书、工程参数和要求。不能填写电话、qq或者特殊字符。" name="projectContent" placeholder-style="color:#f1f1f1" maxlength="150" bindinput="textnum" bindblur="get_icon" data-index="6"/>
+            <text class="hide_text {{dirs_l}}">15-150字，如要求施工队人数、业绩、工人拥有的资格证书、工程参数和要求。不能填写电话、qq或者特殊字符。</text>
+            <text class="num">{{textnum}}/150</text>
+            <input name="projectType" value="2" class="hide"/>
+            <input  name="payType" value="1" class="hide"/>
+        </view>
+    </view>
+    <view class="money {{totalAmount_box}}">工程金额  {{danjia}} 元  <text style="display:inline-block;font-size:32rpx;">X</text>  {{daynum}} 天={{totalAmount}} 元</view>
+    <button class="inventWork" formType="submit">确定邀约</button>
+</form>
+<!--开始放日期-->
+<view class="flex box1 box-tb box-align-center time_box" hidden="{{time_box}}">
+  <view class="calendar pink-color box1 box-tb ">
+        <view class="top-handle fs28 box1 box-lr box-align-center box-pack-center">
+            <view class="prev box box-rl" bindtap="handleCalendar" data-handle="prev">
+                <view class="prev-handle box1 box-lr box-align-center box-pack-center">《</view>
+            </view>
+            <view class="date-area box1 box-lr box-align-center box-pack-center">{{cur_year || "--"}} 年 {{click_month || "--"}} 月</view>
+            <view class="next box1 box-lr" bindtap="handleCalendar" data-handle="next">
+                <view class="next-handle box1 box-lr box-align-center box-pack-center">》</view>
+            </view>
+        </view>
+        <view class="weeks box1 box-lr box-pack-center box-align-center">
+            <view class="flex week fs28" wx:for="{{weeks_ch}}" wx:key="{{index}}" data-idx="{{index}}">{{item}}</view>
+            <!--这是星期-->
+        </view>
+        <view class="days box1 box-lr box-wrap">
+            <view wx:if="{{hasEmptyGrid}}" class="grid white-color box1 box-align-center box-pack-center" wx:for="{{empytGrids}}" wx:key="{{index}}" data-idx="{{index}}">
+            </view>
+            <view class="grid white-color box1 box-align-center box-pack-center {{cur_year+'-'+cur_month+'-'+(index+1) ==cur_year+'-'+to_month+'-'+cur_data ? 'border-radius pink-bg' : ''}} {{bg == cur_year+'-'+click_month+'-'+(index+1)? 'bg-green' : ''}} {{end_bg == cur_year+'-'+cur_month+'-'+(index+1)? 'bg-red' : ''}} {{(mo_num==bg_moth&&mo_num==cur_month)&&((index+1)>bg_num&&(index+1)<end_bg_num)? 'bg-gay' : ''}} {{(mo_num>bg_moth&&cur_month==bg_moth)&&((1+index)>bg_num)? 'bg-gay' : ''}} {{(mo_num>bg_moth&&cur_month==mo_num)&&((1+index)<end_bg_num)? 'bg-gay' : ''}} {{(mo_num>bg_moth&&(mo_num-bg_moth>1)&&cur_month<mo_num&&cur_month>bg_moth)? 'bg-gay' : ''}} {{item.active?'bg-gay' : ''}}" data-active="{{item.active}}" wx:for="{{days}}" wx:key="{{index}}" data-idx="{{cur_year+'-'+cur_month+'-'+(index+1)}}" bindtap="addColor">
+                <view class="day box1 box-align-center box-pack-center {{(cur_month==to_month)&&((index+1) <=cur_data) ? 'color_gay' : ''}}">{{item.index}}</view>
+            </view>
+        </view>
+    </view>
+    <text bindtap="close_time" class="close_time">确认</text>
+</view>

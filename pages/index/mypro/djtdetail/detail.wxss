@@ -1,0 +1,126 @@
+/* pages/mine/mypro/mypro/prodetail.wxss */
+.detail_yhby{
+    width:624rpx;
+    padding:40rpx 30rpx 0;
+    border:1px solid #ccc;
+    border-radius: 6px;
+    margin:20rpx auto 0   ;
+    background: #fff;
+}
+.classname{
+    padding:20rpx;
+}
+.classname image{
+    width: 32rpx;
+    height:32rpx;
+    margin-right:19rpx;
+}
+.getwork .worker,.getwork .team{
+    width:625rpx;
+    height:114rpx;
+    background: #fff;
+    padding:30rpx 20rpx;
+    border:1px solid #ccc;
+    border-radius: 6px;
+    margin: 0 auto 20rpx;
+    position: relative;
+}
+.classname text{
+    font-size:28rpx;
+    line-height: 34rpx;
+}
+
+.userImg{
+    width:114rpx;
+    height: 114rpx;
+    border-radius: 50%;
+    margin-right:18rpx;
+}
+.start image{
+    float: left;
+    width:18rpx;
+    height:18rpx;
+    margin-right:6rpx;
+}
+.shiming{
+    text-align: right;
+}
+.renzheng{
+    height:30rpx;
+    width:100rpx;
+    line-height: 30rpx;
+    text-align: center;
+    background: #fffcef;
+    color: #fdb730;
+    border:1px solid #fdb730;
+    border-radius: 4px;
+}
+.name{
+    font-size:28rpx;
+    height:35rpx;
+    line-height: 35rpx;
+}
+.name text{
+    display: inline-block;
+}
+.name text:last-child{
+    color: #147ce6;
+}
+.typename{
+    color: #969696;
+    font-size:24rpx;
+    line-height: 60rpx;
+}
+.tuijian{
+    font-size:24rpx;
+    color: #d3d3d3;
+    margin-top:14rpx;
+    width:200rpx;
+}
+.linkWorker{
+    position:absolute;
+    bottom: 0;
+    right:0;
+    border-radius: 6px 0 6px 0;
+    background: #147ce6;
+    height:40rpx;
+    width:172rpx;
+    color: #fff;
+    font-size:24rpx;
+    text-align: center;
+    line-height: 40rpx;
+}
+.baoming{
+    height: 66rpx;
+    line-height: 66rpx;
+    color: #969696;
+    font-size: 24rpx;
+    text-align: center;
+}
+.wid5{
+    width: 533rpx;
+}
+.enrollState{
+    width:625rpx;
+    height: 66rpx;
+    line-height: 66rpx;
+    color: #000;
+    font-size: 24rpx;
+    margin: 0 auto;
+}
+.enrollState .icon{
+    margin:16rpx 20rpx 0 0;
+    float: left;
+}
+.enrollState image{
+    margin:20rpx 20rpx 0 0;
+    float:left;
+    height:30rpx;
+    width:30rpx;
+}
+.q_img{
+    margin:16rpx 20rpx 0 0;
+    float:left;
+    height:30rpx;
+    width:30rpx;
+}

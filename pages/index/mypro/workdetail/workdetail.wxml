@@ -1,0 +1,83 @@
+<view class="detail_box">
+    <view class="myprolist">
+        <image src="http://{{workerMsg.headHost+workerMsg.headPath}}" class="user_img"></image>
+        <view class="one_box">
+            <view class="one">{{workerMsg.reallyName}}     
+                <text>{{workerMsg.workerLevelName}}</text>
+            </view>
+            <text class="get_block workTypeName">{{workerMsg.workTypeName}}</text>
+            <view class="start clearfix" wx:if="{{workerMsg.commentScoreAvg==5}}">
+                    <image src="../../../img/start1.png"  wx:for="{{workerMsg.commentScoreAvg}}"></image>
+                </view>
+                <!--此处是给评分为0的工匠添加的虚假星星,勿删除-->
+                <view class="start" wx:elif="{{workerMsg.commentScoreAvg==0.0}}">
+                    <view  wx:if="{{workerMsg.hasBaomingNums==0}}">
+                        <image src="../../../img/start7.png"  wx:for="{{5}}"></image>
+                    </view>
+                    <view  wx:if="{{workerMsg.hasBaomingNums==1}}">
+                        <image wx:for="{{3}}" src="../../../img/start1.png"></image>
+                        <image src="../../../img/start7.png"  wx:for="{{2}}"></image>
+                    </view>
+                    <view  wx:if="{{workerMsg.hasBaomingNums==2}}">
+                        <image wx:for="{{3}}" src="../../../img/start1.png"></image>
+                        <image src="../../../img/start4.png" ></image>
+                        <image src="../../../img/start7.png"></image>
+                    </view>
+                    <view  wx:if="{{workerMsg.hasBaomingNums>=3}}">
+                        <image wx:for="{{4}}" src="../../../img/start1.png"></image>
+                        <image src="../../../img/start7.png"  wx:for="{{1}}"></image>
+                    </view>
+                </view>
+                <view class="start" wx:elif="{{workerMsg.commentScoreAvg < 5&&workerMsg.commentScoreAvg >0}}">
+                    <image wx:for="{{workerMsg.commentScoreAvg-(workerMsg.commentScoreAvg)%1}}" src="../../../img/start1.png"></image>
+                    <image  wx:if="{{workerMsg.commentScoreAvg%1>=0.8}}"src="../../../img/start6.png" ></image>
+                    <image  wx:elif="{{workerMsg.commentScoreAvg%1<0.8&&workerMsg.commentScoreAvg%1>0.5}}"src="../../../img/start5.png" ></image>
+                    <image  wx:elif="{{workerMsg.commentScoreAvg%1==0.5}}"src="../../../img/start4.png" ></image>
+                    <image  wx:elif="{{workerMsg.commentScoreAvg%1<=0.5&&workerMsg.commentScoreAvg%1>0.3}}"src="../../../img/start3.png" ></image>
+                    <image  wx:else src="../../../img/start2.png" ></image>
+                    <image src="../../../img/start7.png" wx:for="{{4-(workerMsg.commentScoreAvg-(workerMsg.commentScoreAvg)%1)}}"></image>   
+                </view>        
+        </view>
+        <view class="fr" >
+            <text class="renzheng" style="float:right">实名认证</text>
+            <text class="get_block" style="margin-top:40rpx;">推荐￥{{workerMsg.daySalary}}/天</text>
+        </view>      
+    </view>
+    <view class="por_msg">
+        <view class="clearfix">
+            <text>性别: {{sex}}</text>
+            <text>年龄: {{workerMsg.age}}</text>
+            <text>籍贯: {{workerMsg.nativePlaceName}}</text>
+        </view>
+        <text class="workAddr">期望工作地点: {{workerMsg.workAddr}}</text>
+        <text>工匠编号: {{workerMsg.workerNo}}</text>
+    </view>
+    <view class="discr">
+        {{workerMsg.myProud}}
+    </view>
+</view>
+<view wx:if="{{impression==''}}"></view>
+<view wx:else class="impression_box">
+    <text class="impression_txt">雇主印象</text>
+    <view class="impression" wx:for="{{impression}}">
+        <view class="clearfix">
+            <image class="fl" src="http://{{item.headHost+item.headPath}}" style="margin-right:10rpx;"></image>
+            <text class="fl" style="margin-right:13rpx;">{{item.employerReallyName}}</text>
+            <text class="fr">{{item.createDate}}</text>
+        </view>
+        <text>{{item.impressionsContent}}</text>
+        <view class="great fr">
+            <!--这是管用的点赞-->
+            <!--<block wx:if="{{item.hasZan}}">
+                <image src="../../img/zan1.jpg" bindtap="deleteZan" data-index="{{item.id}}"></image>
+            </block>
+            <block wx:else>
+                <image src="../../img/zan.jpg" bindtap="addZan" data-index="{{item.id}}"></image>
+            </block>-->
+            <!--这是不管用的点赞-->
+            <image src="../../../img/zan.jpg" data-index="{{item.id}}"></image>
+            {{item.zanNum}}
+        </view>
+    </view>
+</view>
+<button class="inventWork" data-index="{{workerMsg.mobileNo}}" bindtap="callNo">联系工匠</button>

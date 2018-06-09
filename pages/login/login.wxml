@@ -1,0 +1,23 @@
+<form bindsubmit="getUserInfo">
+    <view class="loginbox">
+        <view class="phone_pass clearfix">
+            <image src="../img/phone.png" class="fl"></image>
+            <input class="tel fl" type="number" name="userName" placeholder="请输入手机号"  maxlength="11" bindinput="inputUser" value="{{value}}"/>
+            <image class="fr {{show}}"src="../img/icon_clear_phone_num.png" style="width:40rpx;" bindtap="clearInput"></image>
+        </view>
+        <view class="phone_pass clearfix">
+            <image src="../img/password.png" class="fl"></image>
+            <input class="{{close}} fl" bindblur="getvalue"  type="password" placeholder="密码" name="password"  maxlength="15" value="{{blurvalue}}"/>
+            <input class="{{open}} fl" bindblur="getvalue"  type="text" placeholder="密码"   maxlength="15" value="{{blurvalue}}"/>
+            <image class="fr {{open}}" src="../img/icon_show_password.png" style="width:40rpx;" bindtap="aboutEye"></image>
+            
+            <image class="fr {{close}}" src="../img/icon_yc_password.png" style="width:40rpx;" bindtap="aboutEye"></image>
+        </view>  
+        <text bindtap="forgetpassword">忘记密码?</text>
+    </view>
+    <button formType="submit">登录</button>
+    <view class="account" >
+        还没有账户?
+        <text bindtap="getRegister">注册</text>
+    </view>
+</form>

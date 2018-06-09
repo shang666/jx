@@ -1,0 +1,49 @@
+/* pages/mine/login/login.wxss */
+.loginbox{
+    width:650rpx;
+    margin:10% auto 0;
+}
+button{
+    width:650rpx;
+    height:80rpx;
+    line-height: 80rpx;
+    color: #fff;
+    background: #067ef9;
+    margin-top:35%
+}
+.loginbox text{
+    font-size:24rpx;
+    float: right;
+    padding-top:20rpx;
+    color: #067ef9
+}
+.account{
+    font-size:24rpx;
+    margin:20% auto 0;
+    text-align: center;
+    display: block
+}
+.account text{
+    color: #067ef9;
+    display: inline-block
+}
+.phone_pass {
+    width:100%;
+    margin:40rpx auto 0;
+    height:80rpx;
+    /*padding-top:20rpx;*/
+    border:1px solid #eeeeee;
+    font-size:28rpx;
+    border-radius: 4px;
+    background: #fff;
+}
+.phone_pass image{
+    margin:20rpx 20rpx;
+    height:40rpx;
+    width: 30rpx;
+}
+.phone_pass input{
+    margin-top:20rpx;
+    width:500rpx;
+    height:40rpx;
+}

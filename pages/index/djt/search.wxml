@@ -1,0 +1,73 @@
+<!--pages/index/djt/search.wxml-->
+<view class="search_box" >
+    <input class="fl" placeholder="请输入姓名、工种或关键词" bindblur="getvalue"/>
+    <text class="fr" bindtap="getUrl">搜 索</text>
+</view>
+<view wx:if="{{list.length==0}}">
+    <image src="../../img/warning_worker.png" mode="aspectFit" class="warning_worker"></image>
+</view>
+<scroll-view wx:else class="list_box" style="height:{{height-46}}px" scroll-y="true"  bindscrolltoupper="upper" scroll-with-animation="true" scroll-top="{{scrollTop}}">
+        <view class="myprolist " bindtap="getDetail" wx:for="{{list}}" data-index="{{item.id}}" data-start="{{item.commentScoreAvg}}">
+            <image src="http://{{item.headHost+item.headPath}}" class="user_img"></image>
+            <view class="one_box">
+                <view class="one clearfix">{{item.reallyName}}     
+                    <text class="fr">{{item.workerLevelName}}</text>
+                </view>
+                <!--<text class="get_block workTypeName">{{item.workTypeName}}</text>-->
+                <view wx:if="{{item.workTypeNameSe==''}}">
+                    <text class="get_block workTypeName">{{item.workTypeName}}</text>
+                </view>
+                 <view wx:else class="get_block workTypeName" 
+                 style="width:250rpx;white-space:nowrap;text-overflow:ellipsis;overflow: hidden;">
+                    <text class="fl">{{item.workTypeName}}</text>
+                    <block>
+                        <text class="fl" style="display:inline-block;color:#969696" wx:for="{{item.othertype}}">·{{item}}</text>
+                    </block>           
+                </view>
+                <view class="start clearfix" wx:if="{{item.commentScoreAvg==5}}">
+                    <image src="../../img/start1.png"  wx:for="{{item.commentScoreAvg}}"></image>
+                </view>
+                <!--此处是给评分为0的工匠添加的虚假星星,勿删除-->
+                <view class="start" wx:elif="{{item.commentScoreAvg==0.0}}">
+                    <view  wx:if="{{item.hasBaomingNums==0}}">
+                        <image src="../../img/start7.png"  wx:for="{{5}}"></image>
+                    </view>
+                    <view  wx:if="{{item.hasBaomingNums==1}}">
+                        <image wx:for="{{3}}" src="../../img/start1.png"></image>
+                        <image src="../../img/start7.png"  wx:for="{{2}}"></image>
+                    </view>
+                    <view  wx:if="{{item.hasBaomingNums==2}}">
+                        <image wx:for="{{3}}" src="../../img/start1.png"></image>
+                        <image src="../../img/start4.png" ></image>
+                        <image src="../../img/start7.png"></image>
+                    </view>
+                    <view  wx:if="{{item.hasBaomingNums>=3}}">
+                        <image wx:for="{{4}}" src="../../img/start1.png"></image>
+                        <image src="../../img/start7.png"  wx:for="{{1}}"></image>
+                    </view>
+                </view>
+                <view class="start" wx:elif="{{item.commentScoreAvg < 5&&item.commentScoreAvg >0}}">
+                    <image wx:for="{{item.commentScoreAvg-(item.commentScoreAvg)%1}}" src="../../img/start1.png"></image>
+                    <image  wx:if="{{item.commentScoreAvg%1>=0.8}}"src="../../img/start6.png" ></image>
+                    <image  wx:elif="{{item.commentScoreAvg%1<0.8&&item.commentScoreAvg%1>0.5}}"src="../../img/start5.png" ></image>
+                    <image  wx:elif="{{item.commentScoreAvg%1==0.5}}"src="../../img/start4.png" ></image>
+                    <image  wx:elif="{{item.commentScoreAvg%1<=0.5&&item.commentScoreAvg%1>0.3}}"src="../../img/start3.png" ></image>
+                    <image  wx:else src="../../img/start2.png" ></image>
+                    <image src="../../img/start7.png" wx:for="{{4-(item.commentScoreAvg-(item.commentScoreAvg)%1)}}"></image>   
+                </view>  
+                <!--此处处理的是评分等级为0的工匠显示情况,勿删除-->
+                <!--<view class="start" wx:elif="{{item.commentScoreAvg==0.0}}">
+                    <image src="../../img/start7.png"  wx:for="{{5}}"></image>
+                </view>     -->
+            </view>
+            <view class="fr" >
+                <text class="renzheng" style="float:right">实名认证</text>
+                <text class="get_block" style="margin-top:50rpx;text-align:right;">推荐￥{{item.daySalary}}/日</text>
+                <!--<text class="get_block" style="font-size:24rpx;text-align:right;" wx:if="{{item.distance}}">距离我{{item.distance}}米</text>-->
+            </view>      
+        </view>
+        <view class="moreworker" wx:if="{{list.length==30}}">
+            <text style="margin-bottom:15rpx;">看了30位工匠还没有找到合适的人选?</text>
+            <text>请增加一些筛选条件吧,或者联系点匠客服也可以哦</text>
+        </view>
+    </scroll-view>

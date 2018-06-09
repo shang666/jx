@@ -1,0 +1,159 @@
+<!--一呼百应工程详情-->
+<view class="detail_yhby">
+    <view class="classname clearfix">
+        <image class="fl" src="../../../img/flag.png"></image>
+        <text class="fl">{{detail.projectTitle}}</text>
+    </view>
+    <view class="classname clearfix">
+        <image class="fl" src="../../../img/tool.png"></image>
+        <text class="fl">{{detail.detailsSet[0].workerTypeName}}</text>
+    </view>
+    <view class="classname clearfix">
+        <image class="fl" src="../../../img/waring.png"></image>
+        <text class="fl">{{detail.workStartDate}}</text>
+        <image class="fl" src="../../../img/heng.png" style="width:111rpx;"></image>
+        <text class="fl">{{detail.workEndDate}}</text>
+    </view>
+    <view class="classname clearfix">
+        <image class="fl" src="../../../img/money.png"></image>
+        <text class="fl">{{detail.detailsSet[0].totalAmount}}元</text>
+    </view>
+    <view class="classname clearfix">
+        <image class="fl" src="../../../img/canpass.png"></image>
+        <text class="fl wid5">{{detail.workCityAddr}}</text>
+    </view>
+    <view class="classname clearfix" style="border-bottom:1px dashed #ccc">
+        <image class="fl" src="../../../img/wirte.png"></image>
+        <text class="fl wid5">{{detail.projectContent}}</text>
+        <image src="http://{{item.savedHost}}{{item.savedPath}}" wx:for="{{detail.attaSet}}" style="width:150rpx;height:150rpx;margin:10rpx 20rpx 0 50rpx;"></image>
+    </view>
+    <view class="classname clearfix" style="padding:20rpx 0 20rpx 0;">
+        <text class="fl" wx:if="{{detail.projectState==0}}"  style="color:#147ce6">已保存(待发布)</text>
+        <text class="fl" wx:if="{{detail.projectState==1}}"  style="color:#147ce6">提交发布(待审核)</text>
+        <text class="fl" wx:if="{{detail.projectState==2}}"  style="color:#147ce6">审核通过</text>
+        <text class="fl" wx:if="{{detail.projectState==3}}"  style="color:#147ce6">审核失败</text>
+        <text class="fl" wx:if="{{detail.projectState==4}}"  style="color:#147ce6">待开工</text>
+        <text class="fl" wx:if="{{detail.projectState==5}}"  style="color:#147ce6">施工中</text>
+        <text class="fl" wx:if="{{detail.projectState==6}}"  style="color:#147ce6">完工待审核</text>
+        <text class="fl" wx:if="{{detail.projectState==8}}"  style="color:#147ce6">任务结束</text>
+        <text class="fl" wx:if="{{detail.projectState==9}}"  style="color:#147ce6">删除</text>
+        <text class="fl" wx:if="{{detail.projectState==10}}" style="color:#147ce6">关闭</text>
+        <text class="fr" style="color:#969696">{{detail.createDate}}</text>
+    </view>
+    <!--<text>施工地址:{{detail.workAddr}}和详细地址:{{detail.workCityAddr}}</text>-->
+</view>
+<view class="detail_yhby" style="padding-top:0" hidden="{{detail.projectState==9?'':'true'}}">
+    <view class="classname clearfix">
+        <image class="fl" src="../../../img/icon_projectstate_new.png"></image>
+        <text class="fl">{{detail.verifyErrName}}</text>
+    </view>
+</view>
+<text class="baoming">{{baoming?'报名工匠':''}}</text>
+<view class="getwork" >
+    <view class="enrollState" wx:if="{{workerInfo.enrollView[0].isEmploy=='0'&&workerInfo.enrollState=='0'}}">
+        <image src="../../../img/q.png"></image>
+    等待工匠接受邀约</view>
+    <view class="enrollState" wx:elif="{{workerInfo.enrollState=='9'}}" ><icon type="warn" size="30" color="red"/>工匠拒绝邀约</view>
+    <view class="enrollState" wx:elif="{{workerInfo.enrollState=='1'}}" ><icon type="success" size="30" color="green"/>工匠已接受邀约</view>
+    <view class="worker {{item.isEmploy=='1'?'':'gary'}}" wx:for="{{pro}}">
+        <view class="" bindtap="getWorkdetail" data-index="{{item.id}}">
+            <image class="fl userImg" wx:if="{{item.headHost==''}}"   src="../../../img/user.png"></image>
+            <image class="fl userImg" wx:else src="http://{{item.headHost+item.headPath}}"></image>
+            <view class="fl">
+                <view class="name">
+                    <text class="">{{item.reallyName}}</text>
+                    <text>{{item.workerLevelName}}</text>
+                </view>
+                <text class="typename">{{item.workTypeName}}</text>
+                <view class="start clearfix" wx:if="{{item.commentScoreAvg==5}}">
+                    <image src="../../../img/start1.png"  wx:for="{{item.commentScoreAvg}}"></image>
+                </view>
+                <!--此处是给评分为0的工匠添加的虚假星星,勿删除-->
+                <view class="start" wx:elif="{{item.commentScoreAvg==0.0}}">
+                    <view  wx:if="{{item.hasBaomingNums==0}}">
+                        <image src="../../../img/start7.png"  wx:for="{{5}}"></image>
+                    </view>
+                    <view  wx:if="{{item.hasBaomingNums==1}}">
+                        <image wx:for="{{3}}" src="../../../img/start1.png"></image>
+                        <image src="../../../img/start7.png"  wx:for="{{2}}"></image>
+                    </view>
+                    <view  wx:if="{{item.hasBaomingNums==2}}">
+                        <image wx:for="{{3}}" src="../../../img/start1.png"></image>
+                        <image src="../../../img/start4.png" ></image>
+                        <image src="../../../img/start7.png"></image>
+                    </view>
+                    <view  wx:if="{{item.hasBaomingNums>=3}}">
+                        <image wx:for="{{4}}" src="../../../img/start1.png"></image>
+                        <image src="../../../img/start7.png"  wx:for="{{1}}"></image>
+                    </view>
+                </view>
+                <view class="start" wx:elif="{{item.commentScoreAvg < 5&&item.commentScoreAvg >0}}">
+                    <image wx:for="{{item.commentScoreAvg-(item.commentScoreAvg)%1}}" src="../../../img/start1.png"></image>
+                    <image  wx:if="{{item.commentScoreAvg%1>=0.8}}"src="../../../img/start6.png" ></image>
+                    <image  wx:elif="{{item.commentScoreAvg%1<0.8&&item.commentScoreAvg%1>0.5}}"src="../../../img/start5.png" ></image>
+                    <image  wx:elif="{{item.commentScoreAvg%1==0.5}}"src="../../../img/start4.png" ></image>
+                    <image  wx:elif="{{item.commentScoreAvg%1<=0.5&&item.commentScoreAvg%1>0.3}}"src="../../../img/start3.png" ></image>
+                    <image  wx:else src="../../../img/start2.png" ></image>
+                    <image src="../../../img/start7.png" wx:for="{{4-(item.commentScoreAvg-(item.commentScoreAvg)%1)}}"></image>
+                </view>
+            </view>
+            <view class="fr shiming">
+                <view class="" style="height:26rpx;">
+                    <text class="renzheng fr">实名认证</text>
+                </view>
+                <text class="tuijian">推荐{{item.daySalary}}元/日</text>
+            </view>
+        </view>
+        <text class="linkWorker" wx:if="{{item.isEmploy=='1'}}" bindtap="linkWorker" data-index="{{item.mobileNo}}">联系工匠</text>
+    </view>
+    <view class="team {{item.isEmploy=='1'?'':'gary'}}" wx:for="{{leaderId}}">
+        <view class="" bindtap="getWorkdetail" data-index="{{item.id}}">
+            <image class="fl userImg" src="http://{{item.headHost+item.headPath}}"></image>
+            <view class="fl">
+                <view class="name">
+                    <text class="">{{item.reallyName}}</text>
+                    <text>{{item.workerLevelName}}</text>
+                </view>
+                <text class="typename">{{item.workTypeName}}</text>
+                <view class="start clearfix" wx:if="{{item.commentScoreAvg==5}}">
+                    <image src="../../../mg/start1.png"  wx:for="{{item.commentScoreAvg}}"></image>
+                </view>
+                <!--此处是给评分为0的工匠添加的虚假星星,勿删除-->
+                <view class="start" wx:elif="{{item.commentScoreAvg==0.0}}">
+                    <view  wx:if="{{item.hasBaomingNums==0}}">
+                        <image src="../../../img/start7.png"  wx:for="{{5}}"></image>
+                    </view>
+                    <view  wx:if="{{item.hasBaomingNums==1}}">
+                        <image wx:for="{{3}}" src="../../../img/start1.png"></image>
+                        <image src="../../../img/start7.png"  wx:for="{{2}}"></image>
+                    </view>
+                    <view  wx:if="{{item.hasBaomingNums==2}}">
+                        <image wx:for="{{3}}" src="../../../img/start1.png"></image>
+                        <image src="../../../img/start4.png" ></image>
+                        <image src="../../../img/start7.png"></image>
+                    </view>
+                    <view  wx:if="{{item.hasBaomingNums>=3}}">
+                        <image wx:for="{{4}}" src="../../../img/start1.png"></image>
+                        <image src="../../../img/start7.png"  wx:for="{{1}}"></image>
+                    </view>
+                </view>
+                <view class="start" wx:elif="{{item.commentScoreAvg < 5&&item.commentScoreAvg >0}}">
+                    <image wx:for="{{item.commentScoreAvg-(item.commentScoreAvg)%1}}" src="../../../img/start1.png"></image>
+                    <image  wx:if="{{item.commentScoreAvg%1>=0.8}}"src="../../../img/start6.png" ></image>
+                    <image  wx:elif="{{item.commentScoreAvg%1<0.8&&item.commentScoreAvg%1>0.5}}"src="../../../img/start5.png" ></image>
+                    <image  wx:elif="{{item.commentScoreAvg%1==0.5}}"src="../../../img/start4.png" ></image>
+                    <image  wx:elif="{{item.commentScoreAvg%1<=0.5&&item.commentScoreAvg%1>0.3}}"src="../../../img/start3.png" ></image>
+                    <image  wx:else src="../../../img/start2.png" ></image>
+                    <image src="../../../img/start7.png" wx:for="{{4-(item.commentScoreAvg-(item.commentScoreAvg)%1)}}"></image>
+                </view>
+            </view>
+            <view class="fr shiming">
+                <view class="" style="height:26rpx;">
+                    <text class="renzheng fr">实名认证</text>
+                </view>
+                <text class="tuijian">推荐{{item.daySalary}}元/日</text>
+            </view>
+        </view>
+        <text class="linkWorker" wx:if="{{item.isEmploy=='1'}}"  bindtap="linkWorker" data-index="{{item.mobileNo}}">联系工匠</text>
+    </view>
+</view>

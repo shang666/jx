@@ -1,0 +1,26 @@
+<swiper indicator-dots="{{indicatorDots}}"  
+        autoplay="{{autoplay}}" interval="{{interval}}"
+         duration="{{duration}}" class="lb" style="height:350rpx;">  
+      <block wx:for="{{img}}">  
+        <swiper-item >  
+           <navigator url="{{item.link}}" hover-class="navigator-hover">  
+            <!--<image src="{{item.url}}" class="slide-image" width="355" height="150"/>  -->
+            <image class="slide-image" src="http://{{item.savedHost+item.savedPath}}" mode="scaleToFill" style="width:100%;height:350rpx"  data-index="item"></image>
+           </navigator>   
+        </swiper-item>  
+      </block>  
+</swiper> 
+<view class="dianjiangtai" bindtap="getDj">
+    <image src="../img/djt.jpg" class="djt"></image>
+    <view class="txt">
+        <text class="tit_txt">点匠台</text>
+        <text class="con_txt">设置筛选条件,挑选心仪工匠</text>
+    </view>
+</view>
+<view class="yihubaiying" bindtap="getEcho" >
+    <image src="../img/yhby.jpg" class="yhby"></image>
+    <view class="txt" style="margin-left:40rpx;">
+        <text class="tit_txt">一呼百应</text>
+        <text class="con_txt">发布工程信息,等待工匠接单</text>
+    </view>
+</view>

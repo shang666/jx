@@ -1,0 +1,28 @@
+<!--logs.wxml-->
+<view class="yellowBg">
+    <image src="../img/change.png" class="change fl"></image>
+    <text style="line-height:35rpx;" class="fr" bindtap="backFindjob">切换到"我是工人，找活干"</text>
+</view>
+<view class="classname">
+
+    <image class="user_png {{login}}" src="../img/user_off.png" bindtap="getLogin"></image>
+    <image class="user_png {{list}}" src="../img/user.png" bindtap="outLogin"></image>
+    <text class="tel_text {{list}}">{{reallyName}}</text>
+    <text class="tel_text {{list}}" style="color:#a4a4a4;font-size:28rpx;">{{username}}</text>
+    <text class="login {{login}}" bindtap="getLogin">登录</text>
+    <view class="mypro {{list}}" bindtap="getProlist">
+        <image src="../img/mypro.png" class="one fl"></image>
+        <text class="fl">我的工程</text>
+        <image src="../img/right.png" class="two fl"></image>
+    </view>
+    <view class="mypro {{login}}">
+        <image src="../img/mypro2.png" class="one fl"></image>
+        <text class="fl" style="color:#c7c7cc">我的工程</text>
+        <image src="../img/right.png" class="two fl"></image>
+    </view>
+    <view class="service" bindtap="callSer">
+        <image src="../img/call.png" class="one fl"></image>
+        <text class="fl">联系客服</text>
+        <text class="fr">400-819-2007</text>   
+    </view>
+</view>

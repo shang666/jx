@@ -1,0 +1,120 @@
+/* pages/index/djt/index.wxss */
+.detail_box{
+    width:620rpx;
+    border-radius: 6px;
+    margin:20rpx auto;
+    padding:32rpx 37rpx 0 28rpx;
+    background: #fff;
+    border:1px solid #d3d3d3
+}
+.inventWork{
+    width: 100%;
+    position: fixed;
+    bottom:0;
+    border:none;
+    background: #147ce6;
+    border-radius: 0;
+    color: #fff;
+}
+.myprolist .user_img{
+    width:113rpx;
+    height:113rpx;
+    display: inline-block;
+    border-radius: 50%;
+}
+.start{
+    height:16rpx;
+    margin-top:-30rpx;
+}
+.start image{
+    display: inline-block;
+    width:16rpx;
+    height:16rpx;
+    margin-right:5rpx;
+}
+.myprolist,.por_msg{
+    border-bottom: 1px dashed #d3d3d3
+}
+.myprolist .one_box{
+    display: inline-block;
+    margin-left: 18rpx;
+}
+.one{
+    font-size:32rpx
+}
+.one text{
+    color: #147ce6;
+    display: inline-block
+}
+.get_block{
+    display: block;
+    color: #969696;
+    font-size:24rpx; 
+    width:100%;
+}
+.workTypeName{
+    line-height:62rpx;
+}
+.por_msg text{
+    display: inline-block;
+    color: #969696;
+    font-size:24rpx;
+    line-height:38rpx;
+    margin-right:38rpx;
+    border-right:1px solid #d6d6d6;
+    padding-right:45rpx;
+}
+.por_msg text:last-child{
+    border-right:none;
+}
+.por_msg .workAddr{
+    border:none;
+}
+.discr{
+    font-size:24rpx;
+    color: #969696;
+    line-height:38rpx;
+    padding:10rpx 0;
+}
+.impression_box{
+    width: 682rpx;
+    border:1px solid #d3d3d3;
+    border-radius: 6px;
+    margin: 0 auto;
+    background: #fff;
+}
+.impression_txt{
+    border-bottom:1px solid #d3d3d3;
+    height: 68rpx;
+    line-height: 68rpx;
+    text-indent: 32rpx;
+    font-size:32rpx;
+    color: #9d9d9d;
+}
+.impression{
+    width:620rpx;
+    /*height:226rpx;*/
+    border-bottom: 1px dashed #d3d3d3;
+    margin:0 auto 5rpx;
+    font-size:24rpx;
+    color: #9d9d9d;
+    line-height: 36rpx;
+    padding:14rpx 0 40rpx;
+}
+.impression .clearfix image{
+    width:55rpx;
+    height:55rpx;
+    display:inline-block;
+    border-radius:50%
+}
+.impression .clearfix{
+    line-height: 55rpx;
+}
+.impression_box .impression:last-child{
+    border:none;
+}
+.great image{
+    width:32rpx;
+    height:35rpx;
+    display:inline-block;
+}

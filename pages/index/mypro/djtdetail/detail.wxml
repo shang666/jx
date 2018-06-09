@@ -1,0 +1,112 @@
+<!--点匠台工程详情-->
+<view class="detail_yhby">
+    <view class="classname clearfix">
+        <image class="fl" src="../../../img/flag.png"></image>
+        <text class="fl">{{detail.projectTitle}}</text>
+    </view>
+    <view class="classname clearfix">
+        <image class="fl" src="../../../img/tool.png"></image>
+        <text class="fl">{{detail.detailsSet[0].workerTypeName}}</text>
+    </view>
+    <view class="classname clearfix">
+        <image class="fl" src="../../../img/waring.png"></image>
+        <text class="fl">{{detail.workStartDate}}</text>
+        <image class="fl" src="../../../img/heng.png" style="width:111rpx;"></image>
+        <text class="fl">{{detail.workEndDate}}</text>
+    </view>
+    <view class="classname clearfix">
+        <image class="fl" src="../../../img/money.png"></image>
+        <text class="fl">{{allcharge}}元</text>
+    </view>
+    <view class="classname clearfix">
+        <image class="fl" src="../../../img/canpass.png"></image>
+        <text class="fl wid5">{{detail.workCityAddr}}</text>
+    </view>
+    <view class="classname clearfix" style="border-bottom:1px dashed #ccc">
+        <image class="fl" src="../../../img/wirte.png"></image>
+        <text class="fl wid5">{{detail.projectContent}}</text>
+    </view>
+    <view class="classname clearfix" style="padding:20rpx 0 20rpx 0;">
+        <text class="fl base_blue" wx:if="{{detail.projectState==0}}">已保存(待发布)</text>
+        <text class="fl base_blue" wx:if="{{detail.projectState==1}}">提交发布(待审核)</text>
+        <text class="fl base_blue" wx:if="{{detail.projectState==2}}">审核通过</text>
+        <text class="fl base_blue" wx:if="{{detail.projectState==3}}">审核失败</text>
+        <text class="fl base_blue" wx:if="{{detail.projectState==4}}">待开工</text>
+        <text class="fl base_blue" wx:if="{{detail.projectState==5}}">施工中</text>
+        <text class="fl base_blue" wx:if="{{detail.projectState==6}}">完工待审核</text>
+        <text class="fl base_blue" wx:if="{{detail.projectState==8}}">任务结束</text>
+        <text class="fl base_blue" wx:if="{{detail.projectState==9}}">删除</text>
+        <text class="fl base_blue" wx:if="{{detail.projectState==10}}">关闭</text>
+        <text class="fr base_gay">{{detail.createDate}}</text>
+    </view>
+</view>
+<view class="detail_yhby" style="padding-top:0" hidden="{{detail.projectState==9?'':'true'}}">
+    <view class="classname clearfix">
+        <image class="fl" src="../../../img/icon_projectstate_new.png"></image>
+        <text class="fl">{{detail.verifyErrName}}</text>
+    </view>
+</view>
+<view wx:if="{{workerInfo.enrollView==''||workerLength=='0'}}"></view>
+<view wx:else>
+    <view class="enrollState" wx:if="{{workerInfo.enrollView[0].isEmploy=='0'&&workerInfo.enrollState=='0'}}" >
+        <image class="q_img" src="../../../img/q.png"></image>
+    等待工匠接受邀约</view>
+    <view class="enrollState" wx:elif="{{projectState=='10'&&workerInfo.enrollView[0].enrollState=='9'}}" ><icon type="warn" size="15" color="red" class="icon"/>工匠拒绝邀约</view>
+    <view class="enrollState" wx:elif="{{workerInfo.enrollState=='1'}}" ><icon type="success" size="15" color="green" class="icon"/>工匠已接受邀约</view>
+    <text  wx:else class="baoming">报名工匠</text>
+<view class="getwork">
+    <view class="worker  {{personal}}" >
+        <view class="clearfix" bindtap="getWorkdetail" data-index="{{workerInfo.workerId}}" data-projectid = "{{workerInfo.enrollView[0].workerInfo.projectId}}" >
+            <image class="fl userImg" src="http://{{workerInfo.enrollView[0].workerInfo.headHost+workerInfo.enrollView[0].workerInfo.headPath}}"></image>
+            <view class="fl">
+                <view class="name">
+                    <text class="">{{workerInfo.enrollView[0].workerInfo.reallyName}}</text>
+                    <text>{{workerInfo.enrollView[0].workerInfo.workerLevelName}}</text>
+                </view>
+                <text class="typename">{{workerInfo.enrollView[0].workerInfo.workTypeName}}</text>
+                <view class="start clearfix" wx:if="{{workerInfo.enrollView[0].workerInfo.commentScoreAvg==5}}">
+                    <image src="../../../img/start1.png"  wx:for="{{workerInfo.enrollView[0].workerInfo.commentScoreAvg}}"></image>
+                </view>
+                <!--此处是给评分为0的工匠添加的虚假星星,勿删除-->
+                <view class="start" wx:elif="{{workerInfo.enrollView[0].workerInfo.commentScoreAvg==0.0}}">
+                    <view  wx:if="{{workerInfo.enrollView[0].workerInfo.hasBaomingNums==0}}">
+                        <image src="../../../img/start7.png"  wx:for="{{5}}"></image>
+                    </view>
+                    <view  wx:if="{{workerInfo.enrollView[0].workerInfo.hasBaomingNums==1}}">
+                        <image wx:for="{{3}}" src="../../../img/start1.png"></image>
+                        <image src="../../../img/start7.png"  wx:for="{{2}}"></image>
+                    </view>
+                    <view  wx:if="{{workerInfo.enrollView[0].workerInfo.hasBaomingNums==2}}">
+                        <image wx:for="{{3}}" src="../../../img/start1.png"></image>
+                        <image src="../../../img/start4.png" ></image>
+                        <image src="../../../img/start7.png"></image>
+                    </view>
+                    <view  wx:if="{{workerInfo.enrollView[0].workerInfo.hasBaomingNums>=3}}">
+                        <image wx:for="{{4}}" src="../../../img/start1.png"></image>
+                        <image src="../../../img/start7.png"  wx:for="{{1}}"></image>
+                    </view>
+                </view>
+                <view class="start" wx:elif="{{workerInfo.enrollView[0].workerInfo.commentScoreAvg < 5&&workerInfo.enrollView[0].workerInfo.commentScoreAvg >0}}">
+                    <image wx:for="{{workerInfo.enrollView[0].workerInfo.commentScoreAvg-(workerInfo.enrollView[0].workerInfo.commentScoreAvg)%1}}" src="../../../img/start1.png"></image>
+                    <image  wx:if="{{workerInfo.enrollView[0].workerInfo.commentScoreAvg%1>=0.8}}"src="../../../img/start6.png" ></image>
+                    <image  wx:elif="{{workerInfo.enrollView[0].workerInfo.commentScoreAvg%1<0.8&&workerInfo.enrollView[0].workerInfo.commentScoreAvg%1>0.5}}"src="../../../img/start5.png" ></image>
+                    <image  wx:elif="{{workerInfo.enrollView[0].workerInfo.commentScoreAvg%1==0.5}}"src="../../../img/start4.png" ></image>
+                    <image  wx:elif="{{workerInfo.enrollView[0].workerInfo.commentScoreAvg%1<=0.5&&workerInfo.enrollView[0].workerInfo.commentScoreAvg%1>0.3}}"src="../../../img/start3.png" ></image>
+                    <image  wx:else src="../../../img/start2.png" ></image>
+                    <image src="../../../img/start7.png" wx:for="{{4-(workerInfo.enrollView[0].workerInfo.commentScoreAvg-(workerInfo.enrollView[0].workerInfo.commentScoreAvg)%1)}}"></image>   
+                </view>  
+            </view>
+            <view class="fr shiming">
+                <view style="height:26rpx;">
+                    <text class="renzheng fr">实名认证</text>
+                </view>
+                <text class="tuijian">推荐{{workerInfo.enrollView[0].workerInfo.daySalary}}元/日</text>
+            </view>
+        </view>
+        <view class="" wx:if="{{!(workerInfo.enrollView[0].isEmploy=='0'&&workerInfo.enrollState=='0')||(projectState=='10'&&workerInfo.enrollView[0].enrollState=='9')}}">
+            <text class="linkWorker"  bindtap="linkWorker" data-index="{{workerInfo.enrollView[0].workerInfo.mobileNo}}">联系工匠</text>
+        </view>   
+    </view>
+    </view>
+</view>
+

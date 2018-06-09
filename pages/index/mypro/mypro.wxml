@@ -1,0 +1,32 @@
+<!--pages/mine/mypro/mypro.wxml-->
+<view wx:if="{{list.length==0}}">
+    <image src="../../img/warning_pro.png" class="warning_pro" mode="aspectFit"></image>
+</view>
+<view wx:else>
+    <view class="myprolist" bindtap="getDetail" 
+    wx:for="{{list}}" data-index="{{item.projectType}}" data-projectId="{{item.projectId}}" >
+        <view class="title clearfix">
+            <image class="fl" src="../../img/flag.png"></image>
+            <text class="fl">{{item.projectTitle}}</text>
+        </view>
+        <view class="content clearfix">
+            <view class="fl">
+                <image  src="../../img/wirte.png"></image>
+            </view>
+            <text class="fl">{{item.projectContent}}</text>
+        </view>
+        <view class="clearfix state">
+            <text class="fl" wx:if="{{item.projectState==0}}">已保存(待发布)</text>
+            <text class="fl" wx:if="{{item.projectState==1}}">提交发布(待审核)</text>
+            <text class="fl" wx:if="{{item.projectState==2}}">审核通过</text>
+            <text class="fl" wx:if="{{item.projectState==3}}">审核失败</text>
+            <text class="fl" wx:if="{{item.projectState==4}}">待开工</text>
+            <text class="fl" wx:if="{{item.projectState==5}}">施工中</text>
+            <text class="fl" wx:if="{{item.projectState==6}}">完工待审核</text>
+            <text class="fl" wx:if="{{item.projectState==8}}">任务结束</text>
+            <text class="fl" wx:if="{{item.projectState==9}}">删除</text>
+            <text class="fl" wx:if="{{item.projectState==10}}">关闭</text>
+            <text class="fr">{{item.createDate}}</text>
+        </view>
+    </view>
+</view>
